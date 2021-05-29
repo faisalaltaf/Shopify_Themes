@@ -6,16 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"  href="{{asset('css/app.css')}}" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
     
 </body>
 </html>
 
+
+
+
+
 @extends('shopify-app::layouts.default')
 
+
+<button>
+                 Chechout
+                                
+                 </button>
+
+                 <p>show </p>
+                
+                
+
 @section('content')
-    <!-- You are: (shop domain name) -->
+        <!-- You are: (shop domain name) -->
     <p>You are: {{ Auth::user()->name }}</p>
 @endsection
 
@@ -33,13 +49,19 @@
         };
         var myTitleBar = TitleBar.create(app, titleBarOptions);
     </script>
+
+  
 @endsection
+ 
+
+
  
 <TABle>
 <thead>
 <tr>
 <th colspan="2"> Product </th>
-<th >Action </th>
+
+<th >Action    </th>
 </tr>
 </thead>
 <tbody>
@@ -47,9 +69,11 @@
 <section>   
 <div class="card">
 <?php $shop = Auth::user();
-$products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
+$products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>1]);
 $products = $products['body']['container']['products'];
 //  echo print_r($products); 
+
+
 
 ?>
 </div>
@@ -93,3 +117,12 @@ $products = $products['body']['container']['products'];
 </section>
 
 </main>
+
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").toggle();
+  });
+});
+</script>
