@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"  href="{{asset('css/app.css')}}" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{asset('js/script.js')}}"></script>
 
 </head>
 <body>
     
+
 </body>
 </html>
 
@@ -20,15 +22,6 @@
 
 @extends('shopify-app::layouts.default')
 
-
-<button>
-                 Chechout
-                                
-                 </button>
-
-                 <p>show </p>
-                
-                
 
 @section('content')
         <!-- You are: (shop domain name) -->
@@ -65,9 +58,9 @@
 </tr>
 </thead>
 <tbody>
-<main>
+
 <section>   
-<div class="card">
+
 <?php $shop = Auth::user();
 $products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>1]);
 $products = $products['body']['container']['products'];
@@ -76,53 +69,47 @@ $products = $products['body']['container']['products'];
 
 
 ?>
-</div>
-</section>
-
-</main>
+ 
 
 
 
 
-<main>
-<section>   
-<div class="card">
-<?php $shop = Auth::user();
+ <?php $shop = Auth::user();
 $products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
 $products = $products['body']['container']['products'];
 
 
-
- foreach($products as $product ){
-
+foreach($products as $product ){
+    
+    
+    
     if(count($product['images']) > 0){
         $image =$product['images'][0]['src'];
     }
-?>
+    ?>
+    
 <tr>
-<td><img width="20" height="20" src="<?php echo $image; ?>" alt="<?php echo $product['title']; ?>"></td>
-<td><?php echo $product['title']; ?></td>
-<td > <a href="" class="secondery icon-trash"></a></td>
-
-
-
+    <td><img width="20" height="20" src="<?php echo $image; ?>" alt="<?php echo $product['title']; ?>"></td>
+    <td><?php echo $product['title']; ?></td>
+    <td > <a href="" class="secondery icon-trash"></a></td>
+    
+    
+    
 </tr>
 <?php
  }
-
-?>
+ 
+ ?>
 </tbody>
 </TABle>
-</div>
-</section>
 
-</main>
+
+
+
+</section>
 
 
 <script>
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").toggle();
-  });
-});
-</script>
+
+
+
