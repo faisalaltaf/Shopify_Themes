@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PHPUnit\Util\Json;
 
-class ScripttagController extends Controller    
+class ScripttagController extends Controller   
 {
 
     function home()
@@ -23,6 +24,7 @@ class ScripttagController extends Controller
 
       $result =  $shop->api()->rest('POST', '/admin/api/2021-04/script_tags.json' ,$script_array);
       dd($result['body']);
+   
         
     }   
 }

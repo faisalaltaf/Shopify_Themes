@@ -1,8 +1,14 @@
 <?php
 
+use App\Models\Active;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\ScripttagController;
+use App\Http\Controllers\StudInsertController;
+use App\Http\Controllers\PrductController;
 use Facade\Ignition\Http\Controllers\ScriptController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +22,9 @@ use Facade\Ignition\Http\Controllers\ScriptController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $actives = Active::get();
+    // dd($actives);
+          return view('welcome',compact('actives'));
     
 })->middleware('auth.shopify')->name('home');
 
@@ -29,3 +37,9 @@ Route::get('/login', function () {
     }
     return view('login');
 })->name('login');
+
+Route::get('/rest', 'ScripttagController@home')->middleware('auth.shopify')->name('rest');
+Route::get('/status','ActiveController@index')->middleware('auth.shopify')->name('status');
+Route::get('/changeStatus','ActiveController@changeUserStatus')->middleware('auth.shopify');
+// Route::get('/update','PrductController@delete')->middleware('auth.shopify')->name('delete');
+
