@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PHPUnit\Util\Json;
-
+    
 class ScripttagController extends Controller   
 {
 

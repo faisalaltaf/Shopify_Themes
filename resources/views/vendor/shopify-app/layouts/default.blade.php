@@ -40,7 +40,8 @@
 
         @yield('scripts')
 
-
+        <script src=""></script>
+<script src=""></script>
         <script src="/public/jquery-1.10.2.js"></script>
     </body>
 </html>

@@ -1,9 +1,8 @@
 @extends('shopify-app::layouts.default')
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
 @foreach($actives as $active)
                   <tr>
@@ -17,17 +16,17 @@
 
 @section('content')
     <!-- You are: (shop domain name) -->
-    
+    <p id="faisal">faisal</p>
 
 <tr>
 
 
 
 
-
+<!-- 
 <form id="formstatus">
 <input type="button">
-</form>
+</form> -->
 
     <p>You are: {{ Auth::user()->name }}</p>
     @endsection
@@ -65,9 +64,10 @@
     
     <section>   
         
-        <?php $shop = Auth::user();
-$products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>1]);
-$products = $products['body']['container']['products'];
+        <?php
+//          $shop = Auth::user();
+// $products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>1]);
+// $products = $products['body']['container']['products'];
 //  echo print_r($products); 
 
 
@@ -76,23 +76,33 @@ $products = $products['body']['container']['products'];
 
  
  <?php $shop = Auth::user();
-$products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
-$products = $products['body']['container']['products'];
+// $products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
+// $products = $products['body']['container']['products'];
 
 
-foreach($products as $product ){
+// foreach($products as $product )
+// {
     
     
     
-    if(count($product['images']) > 0){
-        $image =$product['images'][0]['src'];
-    }
-    ?>
+    // if(count($product['images']) > 0){
+    //     $image =$product['images'][0]['src'];
+    // }
+    ?>  
     
 <tr>
-    <td><img width="20" height="20" src="<?php echo $image; ?>" alt="<?php echo $product['title']; ?>"></td>
-    <td><?php echo $product['title']; ?></td>
-    <td>
+    <!-- <td><img width="20" height="20" src="
+    <?php
+    //  echo $image;
+      ?>
+    " alt="<?php 
+    // echo 
+    // $product['title'];
+     ?>"></td> -->
+    <!-- <td><?php 
+    // echo $product['title'];
+     ?></td> -->
+    <!-- <td> -->
 
 
                                             
@@ -101,7 +111,7 @@ foreach($products as $product ){
     
 </tr>
 <?php
- }
+//  }
  
  ?>
 </tbody>
@@ -114,7 +124,14 @@ foreach($products as $product ){
 
 
 <script>
-  $(function() {
+  
+</script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+<script>
+
+$(function() {
     $('.toggle-class').change(function() {
         var status = $(this).prop('checked') == true ? 1 : 0; 
         var id = $(this).data('id'); 
@@ -125,15 +142,21 @@ foreach($products as $product ){
             url: '/changeStatus',
             data: {'status': status, 'id': id},
             success: function(data){
-              console.log(data.success)
+                if(data.success){
+                $("#myDIV").css("display", "none");
+                alert(data.success)
+              }
+              if(data.faild){
+                  $("#myDIV").css("display", "block");
+
+              }
+              
             }
         });
     })
   })
+
 </script>
-
-</body>
-
 </html>
 
     
