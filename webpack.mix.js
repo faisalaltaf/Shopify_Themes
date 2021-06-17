@@ -1,3 +1,4 @@
+const { js } = require('laravel-mix');
 const mix = require('laravel-mix');
 
 /*
@@ -12,7 +13,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+js('resources/js/shopifycustom.js', 'public/js')
     .js('resources/js/codeins-app.js' , 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
+    .postCss('resources/css/custom.css' ,'public/css',[
+
+    ])
+.postCss('resources/css/app.css', 'public/css', [
+   
+       
     ]);

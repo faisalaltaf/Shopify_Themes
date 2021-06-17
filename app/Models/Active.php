@@ -9,6 +9,6 @@ class Active extends Model
 {
     use HasFactory;
     protected $fillable = [
-'status',
+'script_id','status',
     ];
 }

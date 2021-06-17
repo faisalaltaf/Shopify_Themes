@@ -15,6 +15,7 @@ class CreateActivesTable extends Migration
     {
         Schema::create('actives', function (Blueprint $table) {
             $table->id();
+            $table->string('script_id');
             $table->string('status');
             $table->timestamps();
         });

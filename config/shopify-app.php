@@ -124,7 +124,7 @@ return [
     |
     */
 
-    'app_name' => env('SHOPIFY_APP_NAME', 'Laravel_Themes'),
+    'app_name' => env('SHOPIFY_APP_NAME', 'Laravel_shop'),
 
     /*
     |--------------------------------------------------------------------------
@@ -148,7 +148,7 @@ return [
     |
     */
 
-    'api_key' => env('SHOPIFY_API_KEY', '36019fea311e6e943f504be6a6ee6edc'),
+    'api_key' => env('SHOPIFY_API_KEY', '626316f205b389d81de630ac57c8eed9'),
 
     /*
     |--------------------------------------------------------------------------
@@ -159,7 +159,7 @@ return [
     |
     */
 
-    'api_secret' => env('SHOPIFY_API_SECRET', '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'),
+    'api_secret' => env('SHOPIFY_API_SECRET', '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'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,9 +170,11 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,write_script_tags'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_themes,write_themes,read_products,write_products,write_script_tags'),
 
     /*
+
+    read_products,write_products,write_script_tags,
     |--------------------------------------------------------------------------
     | Shopify API Grant Mode
     |--------------------------------------------------------------------------

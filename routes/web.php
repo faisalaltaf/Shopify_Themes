@@ -4,6 +4,7 @@ use App\Models\Active;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ScripttagController;
 use App\Http\Controllers\StudInsertController;
 use App\Http\Controllers\PrductController;
@@ -32,14 +33,20 @@ Route::get('/rest', 'ScripttagController@home')->middleware('auth.shopify')->nam
 
 //This will redirect user to login page.
 Route::get('/login', function () {
-    if (Auth::user()) {
+    if(Auth::user()) {
         return redirect()->route('home');
     }
     return view('login');
+
+    
+
 })->name('login');
 
 Route::get('/rest', 'ScripttagController@home')->middleware('auth.shopify')->name('rest');
 Route::get('/status','ActiveController@index')->middleware('auth.shopify')->name('status');
 Route::get('/changeStatus','ActiveController@changeUserStatus')->middleware('auth.shopify');
+Route::get('/assetapi','AssetController@assetapi')->middleware('auth.shopify');
+
 // Route::get('/update','PrductController@delete')->middleware('auth.shopify')->name('delete');
 
+    
