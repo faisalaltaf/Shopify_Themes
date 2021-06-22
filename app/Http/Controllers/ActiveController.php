@@ -27,23 +27,10 @@ class ActiveController extends Controller
     $shop = auth()->user();
     // ($result = $shop->api()->rest('GET' ,'/admin/api/2021-04/script_tags.json'));
     // $result= $shop->api()->rest('DELETE','/admin/api/2021-04/script_tags/176928751765.json');
-
-
-
-
-
-
-   
-
-
-
-
         $active = Active::find(request('id'));
         $active->status = request('status');
         $active->save();
         $active = Active::where('id', request('id'))->update(['status'=>$active['status']]);
-
-
 // snipped add 
 
 $result = $shop->api()->rest('GET','/admin/api/2021-04/themes.json');
@@ -62,11 +49,6 @@ $asset_file = array(
 "value" => $value
     )
     );
-
-  
-    
-    
-    
     if(request('status')==1):
        $asset = $shop->api()->rest('PUT', '/admin/api/2021-04/themes/'.$activeid.'/assets.json', $asset_file);
 

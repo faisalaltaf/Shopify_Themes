@@ -1,7 +1,6 @@
 @extends('shopify-app::layouts.default')
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 
 @foreach($actives as $active)
@@ -19,17 +18,14 @@
                    
                @endforeach
 
-
 @section('content')
     <!-- You are: (shop domain name) -->
-    <p id="faisal">faisal</p>
+ 
 
 <tr>
 
 
 
-
-<!-- 
 <form id="formstatus">
 <input type="button">
 </form> -->
@@ -62,11 +58,16 @@
         </script>
 
 <script src="{{asset('js/script.js')}}"></script>
+
+
+
+
+
 @endsection
 
 
 
-
+<!-- 
 <TABle id="myDIV">
     <thead>
         <tr>
@@ -76,7 +77,7 @@
     </tr>
 </thead>
 
-<tbody>
+<tbody> -->
     
     <section>   
         
@@ -92,33 +93,37 @@
 
  
  <?php $shop = Auth::user();
-// $products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
-// $products = $products['body']['container']['products'];
+$products = $shop->api()->rest('GET','/admin/api/2021-01/products.json',['limits' =>4]);
+$products = $products['body']['container']['products'];
 
 
-// foreach($products as $product )
-// {
+foreach($products as $product )
+{
     
     
     
-    // if(count($product['images']) > 0){
-    //     $image =$product['images'][0]['src'];
-    // }
+    if(count($product['images']) > 0){
+        $image =$product['images'][0]['src'];
+    }
     ?>  
     
 <tr>
-    <!-- <td><img width="20" height="20" src="
+     <><img width="20" height="20" src=
     <?php
-    //  echo $image;
-      ?>
-    " alt="<?php 
-    // echo 
-    // $product['title'];
-     ?>"></td> -->
-    <!-- <td><?php 
-    // echo $product['title'];
-     ?></td> -->
-    <!-- <td> -->
+     echo $image;  ?> 
+   
+   
+</td> <?php 
+    echo 
+    $product['title'];
+     ?>
+     </td>
+    <td>
+        <?php 
+    echo $product['title'];
+     ?>
+     </td> 
+    <td> 
 
 
                                             
@@ -127,7 +132,7 @@
     
 </tr>
 <?php
-//  }
+ }
  
  ?>
 </tbody>
@@ -137,28 +142,6 @@
 
 </section>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link href="https://shopifythemes.test/css/editor.css" type="text/css" rel="stylesheet"/>
-		<title>LineControl | v1.1.0</title>
-	
-	
-		<div class="container-fluid">
-			<div class="row">
-				<h2 class="demo-text">LineControl Demo</h2>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 nopadding">
-							<textarea id="txtEditor"></textarea> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid footer">
-			<p class="pull-right">&copy; Suyati Technologies <script>document.write(new Date().getFullYear())</script>. All rights reserved.</p>
-		</div>
-	
 
 
 

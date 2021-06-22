@@ -7,8 +7,9 @@ use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ScripttagController;
 use App\Http\Controllers\StudInsertController;
-use App\Http\Controllers\PrductController;
+use App\Http\Controllers\PruductController;
 use Facade\Ignition\Http\Controllers\ScriptController;
+
 
 
 /*
@@ -34,7 +35,7 @@ Route::get('/rest', 'ScripttagController@home')->middleware('auth.shopify')->nam
 //This will redirect user to login page.
 Route::get('/login', function () {
     if(Auth::user()) {
-        return redirect()->route('home');
+        // return redirect()->route('home');
     }
     return view('login');
 
@@ -47,6 +48,34 @@ Route::get('/status','ActiveController@index')->middleware('auth.shopify')->name
 Route::get('/changeStatus','ActiveController@changeUserStatus')->middleware('auth.shopify');
 Route::get('/assetapi','AssetController@assetapi')->middleware('auth.shopify');
 
-// Route::get('/update','PrductController@delete')->middleware('auth.shopify')->name('delete');
+// product view route
+Route::get('/view_product','PruductController@index')->name('productview')->middleware('auth.shopify');
+
+
+// ==============Delete Product From Shopify Store========
+Route::delete('/delete','PruductController@delete_product')->name('delete_product')->middleware(['auth.shopify']);
+// ==============Delete Product Varient From Shopify Store========
+Route::get('/delete_variant/{p_id}/{v_id}','PruductController@delete_variant')->name('deleteVariant')->middleware(['auth.shopify']);
+
+//Add Product to shopify store
+Route::get('/add_product','PruductController@insert_product')->name('insert_product')->middleware(['auth.shopify']);
+Route::post('/add_product','PruductController@add_product')->name('add_product')->middleware(['auth.shopify']);
+
+// ====================== Edit Product ======================
+Route::get('/edit/{id}','PruductController@edit')->name('edit')->middleware(['auth.shopify']);
+Route::post('/edit/{id}','PruductController@update_product')->name('update')->middleware(['auth.shopify']);
+// ====================== Edit Variant=======================
+Route::get('/edit/variant/{p_id}/{v_id}','PruductController@edit_variant')->name('edit_variant')->middleware(['auth.shopify']);
+Route::post('/edit/variant/{p_id}/{v_id}','PruductController@update_variant')->name('update_variant')->middleware(['auth.shopify']);
+
+//================Ajax Combination ==========================
+Route::post('/combi','PruductController@combi')->name('combi');
+
+
+//===============Delete Varient ============================
+
+Route::post('/deleteCombination','PruductController@deleteCombination')->name('deleteCombination');
+
+
 
     

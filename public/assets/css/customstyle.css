@@ -1,0 +1,15 @@
+input[type="search"] {
+    background: transparent;
+}
+.dataTables_filter label
+{
+	color:white;
+}
+
+.dataTables_length select {
+    background: transparent;
+}
+.dataTables_length label
+{
+	color:white;
+}
